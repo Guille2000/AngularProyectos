@@ -13,6 +13,7 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class CrearComponent {
   usuarioId: any | null;
+  creado: boolean = false;
   constructor(
     private proyectoService: ProyectosService,
     private tokenService: TokenService,
@@ -27,7 +28,7 @@ export class CrearComponent {
 
   crearForm: FormGroup = this.formBuilder.group({
     nombre: ['', [Validators.required]],
-    descripcion: ['', [Validators.required]],
+    descripcion: ['', [Validators.required, , Validators.minLength(20)]],
     cliente: ['', [Validators.required]],
     fechaEntrega: ['', [Validators.required]],
   });
@@ -40,9 +41,14 @@ export class CrearComponent {
       cliente: this.crearForm.value.cliente,
       fechaEntrega: this.crearForm.value.fechaEntrega,
     };
-    this.proyectoService
-      .crearProyecto(proyecto)
-      .subscribe((data) => console.log(data));
+    this.proyectoService.crearProyecto(proyecto).subscribe((data) => {
+      console.log(data);
+    });
+    this.crearForm.reset();
+    this.creado = true;
+    setTimeout(() => {
+      this.creado = false;
+    }, 2000);
   }
 
   token() {

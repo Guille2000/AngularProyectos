@@ -25,4 +25,11 @@ export class ProyectosService {
     return this.http.get(`${this.url}/id?Id=${id}`)
   }
 
+  editarProyecto(id:string, proyecto:ProyectoCreacionDTO):Observable<ProyectoCreacionDTO>{
+    return this.http.put<ProyectoCreacionDTO>(`${this.url}/editar?Id=${id}`, proyecto)
+  }
+  eliminarProyecto(id:string){
+    return this.http.delete(`${this.url}/eliminar?Id=${id}`)
+  }
+
 }

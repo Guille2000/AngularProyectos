@@ -1,13 +1,28 @@
-<h1 class="font-black text-4xl">Nuevo proyecto</h1>
-<div *ngIf="creado" class="text-center">
+<div class="lg:flex lg:justify-between">
+<h1 class="font-black text-4xl mb-5 md:mb-0">Editar proyecto</h1>
+<div
+  class="flex items-center gap-2 text-gray-400 hover:text-black cursor-pointer"
+>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+</svg>
+
+
+  <a 
+  (click)="eliminar()"
+  class="uppercase font-bold">Eliminar</a>
+</div>
+</div>
+
+<div *ngIf="editado" class="text-center">
   <p
     class="from-sky-400 to-sky-600 bg-gradient-to-br text-center p-2 rounded-xl uppercase text-white font-bold text-sm my-10"
   >
-    El proyecto ha sido creado correctamente.
+    El proyecto ha sido editado correctamente.
   </p>
 </div>
 <form
-  [formGroup]="crearForm"
+  [formGroup]="editarForm"
   class="shadow mt-5 bg-white py-10 px-5 md:w-1/2 rounded-lg"
 >
   <div>
@@ -22,10 +37,9 @@
       placeholder="Nombre del proyecto"
       formControlName="nombre"
     />
-
     <span
       class="text-center text-red-700 font-bold"
-      *ngIf="crearForm.get('nombre')?.touched && crearForm.get('nombre')?.errors?.['required']"
+      *ngIf="editarForm.get('nombre')?.touched && editarForm.get('nombre')?.errors?.['required']"
       >El nombre es requerido</span
     >
   </div>
@@ -44,12 +58,12 @@
 
     <span
       class="text-center text-red-700 font-bold"
-      *ngIf="crearForm.get('descripcion')?.touched && crearForm.get('descripcion')?.errors?.['required']"
+      *ngIf="editarForm.get('descripcion')?.touched && editarForm.get('descripcion')?.errors?.['required']"
       >La descripcion es requerida</span
     >
     <span
       class="text-center text-red-700 font-bold"
-      *ngIf="crearForm.get('descripcion')?.touched && crearForm.get('descripcion')?.errors?.['minlength']"
+      *ngIf="editarForm.get('descripcion')?.touched && editarForm.get('descripcion')?.errors?.['minlength']"
       >Debe tener 20 caracteres</span
     >
   </div>
@@ -71,7 +85,7 @@
 
     <span
       class="text-center text-red-700 font-bold"
-      *ngIf="crearForm.get('fechaEntrega')?.touched && crearForm.get('fechaEntrega')?.errors?.['required']"
+      *ngIf="editarForm.get('fechaEntrega')?.touched && editarForm.get('fechaEntrega')?.errors?.['required']"
       >Ingrese una fecha</span
     >
   </div>
@@ -91,16 +105,16 @@
 
     <span
       class="text-center text-red-700 font-bold"
-      *ngIf="crearForm.get('cliente')?.touched && crearForm.get('cliente')?.errors?.['required']"
+      *ngIf="editarForm.get('cliente')?.touched && editarForm.get('cliente')?.errors?.['required']"
       >Ingrese un cliente</span
     >
   </div>
 
   <input
     type="submit"
-    value="Crear proyecto"
-    [disabled]="crearForm.invalid"
-    (click)="crear()"
+    value="Editar proyecto"
+    [disabled]="editarForm.invalid"
+    (click)="editar()"
     class="mt-5 bg-sky-600 w-full p-3 uppercase font-bold text-white rounded hover:bg-sky-700 transition-colors"
   />
 </form>

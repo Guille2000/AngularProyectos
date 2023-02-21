@@ -6,6 +6,7 @@ import { CrearComponent } from './crear/crear.component';
 import { HomeComponent } from './home/home.component';
 import { ProyectosComponent } from './proyectos/proyectos.component';
 import { VerProyectoComponent } from './ver-proyecto/ver-proyecto.component';
+import { EditarProyectoComponent } from './editar-proyecto/editar-proyecto.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path:':id',
         component:VerProyectoComponent
+      },
+      {
+        path:'editar/:id',
+        component:EditarProyectoComponent
       },
       {
         path:'**',

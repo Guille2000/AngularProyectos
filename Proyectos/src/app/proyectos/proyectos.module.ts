@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { ProyectosComponent } from './proyectos/proyectos.component';
 import { VerProyectoComponent } from './ver-proyecto/ver-proyecto.component';
+import { EditarProyectoComponent } from './editar-proyecto/editar-proyecto.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { VerProyectoComponent } from './ver-proyecto/ver-proyecto.component';
     ListaProyectosComponent,
     HomeComponent,
     ProyectosComponent,
-    VerProyectoComponent
+    VerProyectoComponent,
+    EditarProyectoComponent
   ],
   imports: [
     CommonModule,
