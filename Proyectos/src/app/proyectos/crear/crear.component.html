@@ -1,0 +1,76 @@
+<h1 class="font-black text-4xl">Nuevo proyecto</h1>
+<form [formGroup]="crearForm" class="shadow mt-5 bg-white py-10 px-5 md:w-1/2 rounded-lg">
+    <div>
+        <label
+        for="nombre"
+        class=" text-gray-700 uppercase font-bold text-sm">
+        Nombre proyecto
+        </label>
+
+        <input
+        id="nombre"
+        type="text"
+        class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+        placeholder="Nombre del proyecto"
+        formControlName="nombre"
+        />
+
+    </div>
+
+    <div>
+        <label
+        for="Descripción"
+        class=" text-gray-700 uppercase font-bold text-sm">
+        Descripción proyecto
+        </label>
+
+        <textarea
+        id="Descripción"
+        formControlName="descripcion"
+        class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+        placeholder="Descripción del proyecto"></textarea>
+     
+    </div>
+
+    <div>
+        <label
+        for="fecha-entrega"
+        class=" text-gray-700 uppercase font-bold text-sm">
+        Fecha Entrega proyecto
+        </label>
+
+        <input
+        id="fecha-entrega"
+        type="date"
+        formControlName="fechaEntrega"
+        class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+        />
+        
+    </div>
+
+    <div>
+        <label
+        for="cliente"
+        class=" text-gray-700 uppercase font-bold text-sm">
+        Cliente proyecto
+        </label>
+
+        <input
+        id="cliente"
+        type="text"
+        formControlName="cliente"
+        class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+        placeholder="Cliente del proyecto"
+        />
+
+    </div>
+
+    <input 
+    type="submit"
+    value="Crear proyecto"
+    (click)="crear()"
+    class="mt-5 bg-sky-600 w-full p-3 uppercase font-bold text-white rounded hover:bg-sky-700 transition-colors"
+    />
+
+   
+</form>

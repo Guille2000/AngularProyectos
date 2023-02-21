@@ -1,0 +1,23 @@
+<header class="px-4 py-5 bg-white border-b">
+    <div class="md:flex md:justify-between">
+        <h2 class="text-4xl text-sky-600 font-black text-center">
+            UpTask
+        </h2>
+        <input type="search"
+               placeholder="Buscar proyecto"
+            class="rounded-lg lg:w-96 block p-2 border"
+        />
+
+        <div class="flex items-center gap-4">
+            <button
+            class="font-bold uppercase" 
+            [routerLink]="'/proyectos/proyectosListado'">Proyectos</button>
+       
+            <button
+            type="button"
+            class="text-white text-sm bg-sky-600 p-3 rounded-md uppercase font-bold"
+            >Cerrar sesion</button> 
+        </div>
+    </div>
+
+</header>

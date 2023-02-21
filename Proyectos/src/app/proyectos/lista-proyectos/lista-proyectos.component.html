@@ -1,0 +1,29 @@
+<h1 class="text-4xl font-black">Lista proyectos</h1>
+
+<div
+  class="p-2 bg-white shadow rounded-lg mt-7"
+  *ngIf="proyectoLista.length == 0"
+>
+  <p class="text-gray-600 uppercase p-5">No hay proyectos aún</p>
+</div>
+
+<div
+  class="bg-white shadow mt-10 rounded-lg"
+>
+  <div
+  *ngFor="let proyecto of proyectoLista" 
+  class="border-b p-5 flex">
+    <p class="flex-1">
+      {{ proyecto.nombre }}
+
+      <span class="text-sm text-gray-500 uppercase">
+        {{ proyecto.cliente }}
+      </span>
+    </p>
+    <a 
+    [routerLink]="['/proyectos/', proyecto.id]"
+    class="text-gray-600 hover:text-gray-800 uppercase text-sm font-bold">
+      Ver Proyecto
+    </a>
+  </div>
+</div>
