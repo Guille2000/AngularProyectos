@@ -16,3 +16,10 @@ export interface ProyectosListado{
     fechaEntrega:Date;
     id:number;
 }
+
+export interface TareaCreacionDTO{
+    usuarioId:string;
+    nombre:string;
+    prioridad:string;
+    descripcion:string;
+}

@@ -48,10 +48,11 @@ export class CrearComponent {
     this.creado = true;
     setTimeout(() => {
       this.creado = false;
-    }, 2000);
+    }, 3000);
   }
 
   token() {
     this.usuarioId = this.tokenService.getIdtoken();
+    console.log(this.usuarioId)
   }
 }

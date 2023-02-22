@@ -31,7 +31,6 @@ export class ListaProyectosComponent implements OnInit {
     .getProyectosId(this.usuarioId)
     .subscribe((data:any) => {
       this.proyectoLista = data 
-      console.log(this.proyectoLista)
     })
   }
 }

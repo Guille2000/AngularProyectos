@@ -9,6 +9,8 @@ import { SharedModule } from '../shared/shared.module';
 import { ProyectosComponent } from './proyectos/proyectos.component';
 import { VerProyectoComponent } from './ver-proyecto/ver-proyecto.component';
 import { EditarProyectoComponent } from './editar-proyecto/editar-proyecto.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from '../services/auth-interceptor.service';
 
 
 @NgModule({

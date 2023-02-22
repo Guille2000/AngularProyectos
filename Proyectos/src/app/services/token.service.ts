@@ -23,4 +23,12 @@ export class TokenService {
     const email = decodedToken['email'];
     return email;
   }
+
+  getToken(){
+    return localStorage.getItem('token')
+  }
+
+  logout(){
+    localStorage.removeItem('token')
+  }
 }
