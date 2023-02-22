@@ -42,7 +42,6 @@ export class CrearComponent {
       fechaEntrega: this.crearForm.value.fechaEntrega,
     };
     this.proyectoService.crearProyecto(proyecto).subscribe((data) => {
-      console.log(data);
     });
     this.crearForm.reset();
     this.creado = true;
@@ -53,6 +52,5 @@ export class CrearComponent {
 
   token() {
     this.usuarioId = this.tokenService.getIdtoken();
-    console.log(this.usuarioId)
   }
 }

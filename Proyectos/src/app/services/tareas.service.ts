@@ -8,6 +8,7 @@ import { TareaCreacionDTO } from '../interfaces/interfaces';
   providedIn: 'root'
 })
 export class TareasService {
+  tareaCreada:TareaCreacionDTO[] = []
 
   constructor(private http:HttpClient) { }
 
@@ -16,6 +17,10 @@ export class TareasService {
 
   crearTareas(id:number, tarea:TareaCreacionDTO):Observable<TareaCreacionDTO>{
     return this.http.post<TareaCreacionDTO>(`${this.url}/tarea/agregar?proyectoId=${id}`, tarea )
+  }
+
+  getTareas(id:number){
+    return this.http.get(`${this.url}/tarea/listado?projectId=${id}`)
   }
 
   

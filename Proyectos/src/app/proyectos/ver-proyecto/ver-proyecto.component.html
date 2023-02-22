@@ -25,17 +25,58 @@
       >Editar</a
     >
   </div>
-
 </div>
 
 <button
-(click)="openDialog()"
-type="button"
-class="flex gap-2 items-center justify-center text-sm m-5 px-5 py-3 w-full md:w-auto rounded-lg uppercase font-bold bg-sky-400 text-white text-center"
+  (click)="openDialog()"
+  type="button"
+  class="flex gap-2 items-center justify-center text-sm m-5 px-5 py-3 w-full md:w-auto rounded-lg uppercase font-bold bg-sky-400 text-white text-center"
 >
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    class="w-6 h-6"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+    />
   </svg>
-Nueva tarea
+  Nueva tarea
 </button>
 
+<p class="font-bold text-xl mt-10">Tareas del proyecto</p>
+<div class="bg-white shadow mt-10 rounded-lg">
+  <div class="border-b p-5 flex justify-between items-center">
+    <div *ngIf="tareaCreada.length == 0">
+      <p class="my-5 p-5">No hay tareas creadas</p>
+    </div>
+    <div *ngFor="let tareas of tareaCreada">
+      <p class="text-xl">{{ tareas.nombre }}</p>
+      <p class="text-sm text-gray-500 uppercase">{{ tareas.descripcion }}</p>
+      <p class="text-xl">{{ tareas.fechaEntrega | date }}</p>
+      <p class="text-gray-600">Prioridad: {{ tareas.prioridad }}</p>
+    </div>
+    <div *ngIf="tareaCreada.length > 0" class="flex gap-2">
+      <button class="bg-indigo-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg">
+        Editar
+      </button>
+
+      <button class="bg-sky-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg">
+        Completa
+      </button>
+
+      <button class="bg-gray-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg">
+        Incompleta
+      </button>
+
+      <button class="bg-red-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg">
+        Eliminar
+      </button>
+    </div>
+  </div>
+</div>

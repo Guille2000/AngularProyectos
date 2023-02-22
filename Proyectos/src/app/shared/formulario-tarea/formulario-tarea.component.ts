@@ -18,13 +18,14 @@ export class FormularioTareaComponent implements OnInit {
   ngOnInit(): void {
   this.token()
    this.proyectoId = this.proyectosService.projectId
-   console.log(this.proyectoId)
   }
 
   crearTarea: FormGroup = this.formBuilder.group({
     nombre: ['', [Validators.required]],
     descripcion: ['', [Validators.required, Validators.minLength(20)]],
-    prioridad: ['', [Validators.required]]
+    prioridad: ['', [Validators.required]],
+    fechaEntrega: ['', [Validators.required]],
+
   });
 
 
@@ -34,10 +35,13 @@ export class FormularioTareaComponent implements OnInit {
       nombre:this.crearTarea.value.nombre,
       descripcion:this.crearTarea.value.descripcion,
       prioridad:this.crearTarea.value.prioridad,
+      fechaEntrega:this.crearTarea.value.fechaEntrega
     }
-    console.log(tarea)
+    
     this.tareasService.crearTareas(this.proyectoId, tarea)
-    .subscribe(data => console.log(data))
+    .subscribe((data:any) => {
+      console.log(data)
+    })
   }
 
   token(){

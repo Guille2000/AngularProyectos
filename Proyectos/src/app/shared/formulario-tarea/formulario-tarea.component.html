@@ -35,6 +35,28 @@
   </div>
 
   <div class="p-5">
+    <label
+      for="fecha-entrega"
+      class="text-gray-700 uppercase font-bold text-sm"
+    >
+      Fecha Entrega proyecto
+    </label>
+
+    <input
+      id="fecha-entrega"
+      type="date"
+      formControlName="fechaEntrega"
+      class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+    />
+
+    <span
+      class="text-center text-red-700 font-bold"
+      *ngIf="crearTarea.get('fechaEntrega')?.touched && crearTarea.get('fechaEntrega')?.errors?.['required']"
+      >Ingrese una fecha</span
+    >
+  </div>
+
+  <div class="p-5">
     <label 
     for="prioridad"
     class="text-gray-700 uppercase font-bold text-sm"

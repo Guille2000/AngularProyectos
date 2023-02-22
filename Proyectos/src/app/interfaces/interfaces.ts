@@ -22,4 +22,5 @@ export interface TareaCreacionDTO{
     nombre:string;
     prioridad:string;
     descripcion:string;
+    fechaEntrega:Date;
 }
