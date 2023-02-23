@@ -4,6 +4,7 @@ import { ProyectosService } from 'src/app/services/proyectos.service';
 import { TareasService } from 'src/app/services/tareas.service';
 import { TokenService } from 'src/app/services/token.service';
 
+
 @Component({
   selector: 'app-formulario-tarea',
   templateUrl: './formulario-tarea.component.html',
@@ -13,6 +14,8 @@ export class FormularioTareaComponent implements OnInit {
   proyectoId!: number;
   idTarea!: number;
   usuarioCreacionId: any;
+
+
   constructor(
     private formBuilder: FormBuilder,
     private tareasService: TareasService,
@@ -24,7 +27,7 @@ export class FormularioTareaComponent implements OnInit {
     this.token();
     this.proyectoId = this.proyectosService.projectId;
     this.idTarea = this.tareasService.tareaId;
-    console.log(this.idTarea);
+    this.crear()
   }
   
 
@@ -46,12 +49,14 @@ export class FormularioTareaComponent implements OnInit {
 
     if (this.idTarea) {
       this.tareasService.editarTareas(tarea, this.idTarea).subscribe((data) => {
-        
+        this.tareasService.emitTareaSuccess(true);
       });
     } else {
       this.tareasService
         .crearTareas(this.proyectoId, tarea)
-        .subscribe((data: any) => {});
+        .subscribe(data => {
+
+        })
     }
   }
 
@@ -59,3 +64,4 @@ export class FormularioTareaComponent implements OnInit {
     this.usuarioCreacionId = this.tokenService.getIdtoken();
   }
 }
+
