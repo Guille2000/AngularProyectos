@@ -10,43 +10,52 @@ import { TokenService } from 'src/app/services/token.service';
   styleUrls: ['./formulario-tarea.component.scss'],
 })
 export class FormularioTareaComponent implements OnInit {
-  proyectoId!: number 
-  usuarioCreacionId:any
-  constructor(private formBuilder: FormBuilder, private tareasService:TareasService,
-    private proyectosService:ProyectosService, private tokenService:TokenService) {}
+  proyectoId!: number;
+  idTarea!: number;
+  usuarioCreacionId: any;
+  constructor(
+    private formBuilder: FormBuilder,
+    private tareasService: TareasService,
+    private proyectosService: ProyectosService,
+    private tokenService: TokenService
+  ) {}
 
   ngOnInit(): void {
-  this.token()
-   this.proyectoId = this.proyectosService.projectId
+    this.token();
+    this.proyectoId = this.proyectosService.projectId;
+    this.idTarea = this.tareasService.tareaId;
+    console.log(this.idTarea);
   }
+  
 
   crearTarea: FormGroup = this.formBuilder.group({
     nombre: ['', [Validators.required]],
-    descripcion: ['', [Validators.required, Validators.minLength(20)]],
+    descripcion: ['', [Validators.required, Validators.minLength(10)]],
     prioridad: ['', [Validators.required]],
     fechaEntrega: ['', [Validators.required]],
-
   });
 
-
-  crear(){
+  crear() {
     const tarea = {
       usuarioId: this.usuarioCreacionId,
-      nombre:this.crearTarea.value.nombre,
-      descripcion:this.crearTarea.value.descripcion,
-      prioridad:this.crearTarea.value.prioridad,
-      fechaEntrega:this.crearTarea.value.fechaEntrega
+      nombre: this.crearTarea.value.nombre,
+      descripcion: this.crearTarea.value.descripcion,
+      prioridad: this.crearTarea.value.prioridad,
+      fechaEntrega: this.crearTarea.value.fechaEntrega,
+    };
+
+    if (this.idTarea) {
+      this.tareasService.editarTareas(tarea, this.idTarea).subscribe((data) => {
+        
+      });
+    } else {
+      this.tareasService
+        .crearTareas(this.proyectoId, tarea)
+        .subscribe((data: any) => {});
     }
-    
-    this.tareasService.crearTareas(this.proyectoId, tarea)
-    .subscribe((data:any) => {
-      console.log(data)
-    })
   }
 
-  token(){
-    this.usuarioCreacionId = this.tokenService.getIdtoken()
+  token() {
+    this.usuarioCreacionId = this.tokenService.getIdtoken();
   }
-
-  
 }

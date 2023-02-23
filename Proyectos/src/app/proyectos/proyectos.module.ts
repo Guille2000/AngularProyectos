@@ -11,6 +11,7 @@ import { VerProyectoComponent } from './ver-proyecto/ver-proyecto.component';
 import { EditarProyectoComponent } from './editar-proyecto/editar-proyecto.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from '../services/auth-interceptor.service';
+import { EditarTareaComponent } from './editar-tarea/editar-tarea.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { AuthInterceptorService } from '../services/auth-interceptor.service';
     HomeComponent,
     ProyectosComponent,
     VerProyectoComponent,
-    EditarProyectoComponent
+    EditarProyectoComponent,
+    EditarTareaComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { AuthInterceptorService } from '../services/auth-interceptor.service';
     FormsModule, 
     ReactiveFormsModule,
     SharedModule
-  ]
+  ],
+  
 })
 export class ProyectosModule { }

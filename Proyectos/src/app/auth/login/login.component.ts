@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     const { email, password } = this.loginForm.value;
     this.auth.login(email, password).subscribe(
       (data) => {
-        this.router.navigate(['proyectos/home']);
+        this.router.navigate(['proyectos/dashboard']);
       },
       (err) => {
         Swal.fire({

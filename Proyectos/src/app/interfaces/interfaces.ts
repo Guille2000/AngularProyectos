@@ -18,6 +18,7 @@ export interface ProyectosListado{
 }
 
 export interface TareaCreacionDTO{
+    id?:number;
     usuarioId:string;
     nombre:string;
     prioridad:string;

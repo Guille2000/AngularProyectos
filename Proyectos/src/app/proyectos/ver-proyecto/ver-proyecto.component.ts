@@ -38,23 +38,20 @@ export class VerProyectoComponent implements OnInit {
         this.proyecto.push(data);
         this.proyectoService.projectId = data.id;
         this.projectIdSubject.next(data.id);
-
       });
 
-      this.getTareas()
+    this.getTareas();
   }
 
-
-  getTareas(){
-    this.projectId$.subscribe(projectId => {
-      this.tareaService.getTareas(projectId)
-      .subscribe((data:any) => {
-        this.tareaCreada = data
-      })
+  getTareas() {
+    this.projectId$.subscribe((projectId) => {
+      if (projectId !== 0) {
+        this.tareaService.getTareas(projectId).subscribe((data: any) => {
+          this.tareaCreada = data;
+        });
+      }
     });
-  
   }
-
 
   openDialog() {
     const dialogRef = this.dialog.open(FormularioTareaComponent, {
@@ -63,9 +60,7 @@ export class VerProyectoComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((data) => {
-      this.getTareas()
+      this.getTareas();
     });
   }
-
-
 }

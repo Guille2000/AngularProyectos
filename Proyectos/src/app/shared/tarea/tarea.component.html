@@ -1,0 +1,35 @@
+<div 
+*ngFor="let tarea of tareasHijo"
+class="border-b p-5 flex justify-between items-center">
+
+    <div
+    >
+        <p class="text-xl mb-1">{{tarea.nombre}}</p>
+        <p class="text-sm mb-1 text-gray-500 uppercase">{{tarea.descripcion}}</p>
+        <p class="mb-1 text-xl">{{tarea.fechaEntrega | date }}</p>
+        <p class="mb-1 text-gray-600">Prioridad: {{tarea.prioridad}}</p>
+
+    </div>
+
+    <div
+     class="flex gap-2">
+        <button
+        (click)="editar(tarea.id!)"
+        class="bg-indigo-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg"
+        >Editar</button>
+
+        <button
+        class="bg-sky-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg"
+        >Completa</button>
+
+        <button
+        class="bg-gray-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg"
+        >Incompleta</button>
+
+        <button
+        class="bg-red-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg"
+        >Eliminar</button>
+
+    </div>
+
+</div>

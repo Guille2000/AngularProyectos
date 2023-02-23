@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { ProyectosComponent } from './proyectos/proyectos.component';
 import { VerProyectoComponent } from './ver-proyecto/ver-proyecto.component';
 import { EditarProyectoComponent } from './editar-proyecto/editar-proyecto.component';
+import { EditarTareaComponent } from './editar-tarea/editar-tarea.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,10 @@ const routes: Routes = [
       {
         path:'editar/:id',
         component:EditarProyectoComponent
+      },
+      {
+        path:'editarTarea/:id',
+        component:EditarTareaComponent
       },
       {
         path:'**',

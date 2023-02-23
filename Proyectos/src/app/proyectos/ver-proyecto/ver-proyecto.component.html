@@ -1,4 +1,5 @@
-<div class="flex justify-between" *ngFor="let proyecto of proyecto">
+
+<div  class="flex justify-between" *ngFor="let proyecto of proyecto">
   <h1 class="font-black text-4xl">{{ proyecto.nombre }}</h1>
 
   <div
@@ -51,32 +52,12 @@
 
 <p class="font-bold text-xl mt-10">Tareas del proyecto</p>
 <div class="bg-white shadow mt-10 rounded-lg">
-  <div class="border-b p-5 flex justify-between items-center">
-    <div *ngIf="tareaCreada.length == 0">
-      <p class="my-5 p-5">No hay tareas creadas</p>
-    </div>
-    <div *ngFor="let tareas of tareaCreada">
-      <p class="text-xl">{{ tareas.nombre }}</p>
-      <p class="text-sm text-gray-500 uppercase">{{ tareas.descripcion }}</p>
-      <p class="text-xl">{{ tareas.fechaEntrega | date }}</p>
-      <p class="text-gray-600">Prioridad: {{ tareas.prioridad }}</p>
-    </div>
-    <div *ngIf="tareaCreada.length > 0" class="flex gap-2">
-      <button class="bg-indigo-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg">
-        Editar
-      </button>
-
-      <button class="bg-sky-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg">
-        Completa
-      </button>
-
-      <button class="bg-gray-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg">
-        Incompleta
-      </button>
-
-      <button class="bg-red-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg">
-        Eliminar
-      </button>
-    </div>
+  <div *ngIf="tareaCreada.length == 0; else Tareas">
+    <p class="text-center my p-10">No hay tareas en este proyecto</p>
   </div>
+  <ng-template #Tareas>
+    <app-tarea 
+    [tareasHijo]="tareaCreada"></app-tarea>
+  </ng-template>
+
 </div>

@@ -8,6 +8,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { FormularioTareaComponent } from './formulario-tarea/formulario-tarea.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from '../services/auth-interceptor.service';
+import { TareaComponent } from './tarea/tarea.component';
 
 
 
@@ -16,6 +17,7 @@ import { AuthInterceptorService } from '../services/auth-interceptor.service';
     HeaderComponent,
     SidebarComponent,
     FormularioTareaComponent,
+    TareaComponent,
   ],
   imports: [
     CommonModule,
@@ -28,6 +30,7 @@ import { AuthInterceptorService } from '../services/auth-interceptor.service';
   exports:[
     HeaderComponent,
     SidebarComponent,
+    TareaComponent
   ]
 })
 export class SharedModule { }
