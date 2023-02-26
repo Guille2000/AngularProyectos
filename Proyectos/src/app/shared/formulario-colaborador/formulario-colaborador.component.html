@@ -1,6 +1,11 @@
 <div *ngIf="error">
-  <p class="bg-red-400 text-white font-bold uppercase p-3 text-center rounded-lg">No se ha encontrado el usuario</p>
+  <p
+    class="bg-red-400 text-white font-bold uppercase p-3 text-center rounded-lg"
+  >
+    No se ha encontrado el usuario
+  </p>
 </div>
+<mat-spinner *ngIf="spinner"></mat-spinner>
 <form
   [formGroup]="buscarForm"
   class="bg-white py-10 px-5 md:w-1/2 rounded-lg shadow"

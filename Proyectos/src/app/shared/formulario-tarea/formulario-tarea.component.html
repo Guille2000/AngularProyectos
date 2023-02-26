@@ -1,4 +1,8 @@
 <h1 class="text-center">{{ idTarea ? 'Editar Tarea' : 'Crear Tarea' }}</h1>
+<div *ngIf="mensaje !== undefined">
+  <p class="bg-red-500 p-4 text-center font-bold text-white text-sm">{{mensaje}}
+  </p>
+</div>
 <form [formGroup]="crearTarea" class="my-5">
   <div class="mb-5 p-5">
     <label for="nombre" class="text-gray-700 uppercase font-bold text-sm"

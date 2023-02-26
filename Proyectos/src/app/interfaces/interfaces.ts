@@ -15,6 +15,7 @@ export interface ProyectosListado{
     cliente:string;
     fechaEntrega:Date;
     id:number;
+    usuarioCreacionId?:string;
 }
 
 export interface TareaCreacionDTO{

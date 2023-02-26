@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
+  spinner:boolean = false
   constructor(
     public auth: AuthService,
     private formBuilder: FormBuilder,
@@ -25,8 +26,10 @@ export class LoginComponent implements OnInit {
 
   login() {
     const { email, password } = this.loginForm.value;
+    this.spinner = true
     this.auth.login(email, password).subscribe(
       (data) => {
+        this.spinner = false 
         this.router.navigate(['proyectos/dashboard']);
       },
       (err) => {
@@ -35,6 +38,7 @@ export class LoginComponent implements OnInit {
           title: 'Oops...',
           text: `${err.error}`,
         });
+        this.spinner = false
       }
     );
   }

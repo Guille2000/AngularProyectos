@@ -57,11 +57,14 @@
   </div>
   <ng-template #Tareas>
     <app-tarea 
+    [esAdmin]="esAdmin"
     [tareasHijo]="tareaCreada"></app-tarea>
   </ng-template>
 
 
 </div>
+
+<div *ngIf="esAdmin">
 <div
 *ngFor="let proyecto of proyecto"
 class="flex items-center justify-between mt-10">
@@ -69,6 +72,13 @@ class="flex items-center justify-between mt-10">
   <a 
   class="text-gray-400 uppercase font-bold hover:text-black"
   [routerLink]="['/proyectos/nuevoColaborador/', proyecto.id]">Añadir</a>
+</div>
+
+<div *ngIf="eliminado">
+  <p>
+    <p class="from-sky-400 to-sky-600 bg-gradient-to-br text-center p-3 rounded-xl uppercase text-white font-bold text-sm my-10">
+      El colaborador ha sido eliminado.
+  </p>
 </div>
 <div class="bg-white shadow mt-10 rounded-lg">
   <div *ngIf="colaboradores.length == 0; else Colaboradores">
@@ -78,6 +88,9 @@ class="flex items-center justify-between mt-10">
 
 <ng-template #Colaboradores>
 <app-colaboradores
+(colaboradorEliminado)="colaboradorEliminado($event)"
 [colaboradoresHijo]="colaboradores"></app-colaboradores>
 </ng-template>
+</div>
+
 

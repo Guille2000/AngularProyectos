@@ -6,6 +6,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from '../services/auth-interceptor.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { AuthInterceptorService } from '../services/auth-interceptor.service';
   imports: [
     CommonModule,
     FormsModule, ReactiveFormsModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    SharedModule
   ]
 })
 export class AuthModule { }

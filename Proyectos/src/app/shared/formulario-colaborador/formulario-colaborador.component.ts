@@ -12,6 +12,7 @@ import { ColaboradoresService } from 'src/app/services/colaboradores.service';
 })
 export class FormularioColaboradorComponent {
   error:boolean = false
+  spinner:boolean = false
   @Output() colaborador = new EventEmitter<Colaborador>()
 
 
@@ -30,11 +31,16 @@ export class FormularioColaboradorComponent {
   buscar(){
     
     const {email} = this.buscarForm.value
+    this.spinner = true 
     this.colaboradoresService.buscarColaboradores(email)
     .subscribe((data:any) =>{
       this.colaborador.emit(data)
+      console.log(data)
+      this.spinner = false
     }, (err) =>{
       this.error = true 
+      this.spinner = false
+      console.log(err)
       setTimeout(() =>{
         this.error = false
       }, 4000)

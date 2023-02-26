@@ -5,9 +5,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
+
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FormularioTareaComponent } from './formulario-tarea/formulario-tarea.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptorService } from '../services/auth-interceptor.service';
 import { TareaComponent } from './tarea/tarea.component';
 import { FormularioColaboradorComponent } from './formulario-colaborador/formulario-colaborador.component';
 import { ColaboradoresComponent } from './colaboradores/colaboradores.component';
@@ -28,7 +28,8 @@ import { ColaboradoresComponent } from './colaboradores/colaboradores.component'
     RouterModule,
     MatDialogModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   
   ],
   exports:[
@@ -36,7 +37,9 @@ import { ColaboradoresComponent } from './colaboradores/colaboradores.component'
     SidebarComponent,
     TareaComponent,
     FormularioColaboradorComponent,
-    ColaboradoresComponent
+    ColaboradoresComponent,
+    MatProgressSpinnerModule
+
   ]
 })
 export class SharedModule { }

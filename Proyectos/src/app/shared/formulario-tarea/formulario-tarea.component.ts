@@ -14,6 +14,7 @@ export class FormularioTareaComponent implements OnInit {
   proyectoId!: number;
   idTarea: number | undefined;
   usuarioCreacionId: any;
+  mensaje:string | undefined
 
 
   constructor(
@@ -54,6 +55,12 @@ export class FormularioTareaComponent implements OnInit {
       this.tareasService
         .crearTareas(this.proyectoId, tarea)
         .subscribe(data => {
+        }, (err) =>{
+          this.mensaje = err.error
+
+          setTimeout(() =>{
+            this.mensaje = undefined
+          }, 3500)
         })
     }
   }

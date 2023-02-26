@@ -5,38 +5,54 @@ import { ProyectosService } from 'src/app/services/proyectos.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ColaboradoresService } from 'src/app/services/colaboradores.service';
 
-
 @Component({
   selector: 'app-nuevo-colaborador',
   templateUrl: './nuevo-colaborador.component.html',
-  styleUrls: ['./nuevo-colaborador.component.scss']
+  styleUrls: ['./nuevo-colaborador.component.scss'],
 })
 export class NuevoColaboradorComponent implements OnInit {
+  proyectoId!: number;
+  colaborador: Colaborador[] = [];
+  mensajeError: string | undefined;
+  mensajeExito: boolean | undefined;
 
-  proyectoId!:number 
-
-  constructor(private colaboradoresService:ColaboradoresService,
+  constructor(
+    private colaboradoresService: ColaboradoresService,
     private activatedRoute: ActivatedRoute,
-    ){}
-  colaborador:Colaborador[] = []  
+    private router:Router
+  ) {}
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(({id}) => {
-      this.proyectoId = id 
-    })
+    this.activatedRoute.params.subscribe(({ id }) => {
+      this.proyectoId = id;
+    });
   }
 
-
-  buscarColaborador(parametros:Colaborador){
-    this.colaborador.push(parametros)
+  buscarColaborador(parametros: any) {
+    this.colaborador.push(parametros);
+    console.log(parametros)
+    console.log(this.colaborador)
   }
 
-  agregarColaborador(email:string){
-    this.colaboradoresService.agregarColaborador(this.proyectoId, JSON.stringify(email))
-    .subscribe((data:any) => {
-      this.colaborador = data 
-    }, (err) =>{
-      console.log(err)
-    })
+  agregarColaborador(email: string) {
+    this.colaboradoresService
+      .agregarColaborador(this.proyectoId, JSON.stringify(email))
+      .subscribe(
+        (data: any) => {
+          this.colaborador = data;
+          this.mensajeExito = true;
+          setTimeout(() => {
+            this.mensajeExito = false;
+            this.router.navigate(['/proyectos/', this.proyectoId])
+          }, 2000);
+        },
+        (err) => {
+          console.log(err.error);
+          this.mensajeError = err.error;
+          setTimeout(() => {
+            this.mensajeError = undefined;
+          }, 3500);
+        }
+      );
   }
 }

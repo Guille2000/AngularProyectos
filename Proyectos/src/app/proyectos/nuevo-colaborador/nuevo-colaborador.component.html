@@ -1,11 +1,29 @@
 <h1 class="text-4xl font-black">Añadir colaborador(a)</h1>
+<div *ngIf="mensajeExito">
+  <p
+    class="bg-sky-700 text-white font-bold uppercase text-sm p-3 rounded-lg text-center"
+  >
+    Se ha agregado el colaborador
+  </p>
+</div>
+<div *ngIf="mensajeError !== undefined">
+  <p
+    class="bg-red-500 text-white font-bold uppercase text-sm p-3 rounded-lg text-center"
+  >
+    {{ mensajeError }}
+  </p>
+</div>
+
 <div class="mt-10 flex justify-center">
   <app-formulario-colaborador
     (colaborador)="buscarColaborador($event)"
   ></app-formulario-colaborador>
 </div>
 
-<div *ngIf="this.colaborador.length" class="lg:flex flex-col gap-2 justify-center mt-5">
+<div
+  *ngIf="this.colaborador.length"
+  class="lg:flex flex-col gap-2 justify-center mt-5"
+>
   <div
     *ngFor="let colaborador of colaborador"
     class="mt-2 bg-white py-10 px-5 lg:w-10/12 rounded-lg shadow"

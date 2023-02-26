@@ -11,6 +11,7 @@ export class ProyectosService {
 
   constructor(private http:HttpClient) { }
   projectId!: number;
+  usuarionCreacionId: any
 
 
   url = environment.apiBase

@@ -22,6 +22,7 @@ export class TareaComponent implements OnInit {
   }
 
   @Input() tareasHijo:TareaCreacionDTO[] = []
+  @Input() esAdmin:boolean = false 
 
   ngOnInit(): void {
     this.tareaService.getTareaSuccess().subscribe((success) => {
@@ -31,7 +32,6 @@ export class TareaComponent implements OnInit {
         });
         this.tareaService.emitTareaSuccess(false);
       }
-      
     });
   }
 
