@@ -12,6 +12,7 @@ import { EditarProyectoComponent } from './editar-proyecto/editar-proyecto.compo
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from '../services/auth-interceptor.service';
 import { EditarTareaComponent } from './editar-tarea/editar-tarea.component';
+import { NuevoColaboradorComponent } from './nuevo-colaborador/nuevo-colaborador.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { EditarTareaComponent } from './editar-tarea/editar-tarea.component';
     ProyectosComponent,
     VerProyectoComponent,
     EditarProyectoComponent,
-    EditarTareaComponent
+    EditarTareaComponent,
+    NuevoColaboradorComponent
   ],
   imports: [
     CommonModule,

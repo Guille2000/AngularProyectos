@@ -12,6 +12,8 @@ import { FormularioTareaComponent } from '../formulario-tarea/formulario-tarea.c
 })
 export class TareaComponent implements OnInit {
 
+  eliminada:boolean = false;
+
   constructor(public dialog: MatDialog, private tareaService:TareasService,
     private proyectoService: ProyectosService,
 
@@ -29,7 +31,21 @@ export class TareaComponent implements OnInit {
         });
         this.tareaService.emitTareaSuccess(false);
       }
+      
     });
+  }
+
+  eliminar(id:number){
+    if(confirm('¿Desea eliminar esta tarea?')){
+      this.tareaService.eliminarTarea(id)
+      .subscribe(data => {
+        this.eliminada = true 
+        this.tareaService.emitTareaSuccess(true)
+        setTimeout(() => {
+          this.eliminada = false
+        }, 2000)
+      })
+    }
   }
 
   editar(id:number){
@@ -39,7 +55,9 @@ export class TareaComponent implements OnInit {
       height: '300px',
     });
 
+
     dialogRef.afterClosed().subscribe((data) => {
+      this.tareaService.tareaId = undefined 
     });
   }
 

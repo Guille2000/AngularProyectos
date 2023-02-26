@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Observable, switchMap } from 'rxjs';
 import {
+  Colaborador,
   ProyectosListado,
   TareaCreacionDTO,
 } from 'src/app/interfaces/interfaces';
@@ -9,6 +10,7 @@ import { ProyectosService } from 'src/app/services/proyectos.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { FormularioTareaComponent } from 'src/app/shared/formulario-tarea/formulario-tarea.component';
 import { TareasService } from 'src/app/services/tareas.service';
+import { ColaboradoresService } from 'src/app/services/colaboradores.service';
 
 @Component({
   selector: 'app-ver-proyecto',
@@ -21,9 +23,11 @@ export class VerProyectoComponent implements OnInit {
   projectId!: number;
   tareaCreada: TareaCreacionDTO[] = [];
   proyecto: ProyectosListado[] = [];
+  colaboradores:Colaborador[] = []
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private colaboradoresService:ColaboradoresService,
     private proyectoService: ProyectosService,
     public dialog: MatDialog,
     private tareaService: TareasService
@@ -41,6 +45,7 @@ export class VerProyectoComponent implements OnInit {
       });
 
     this.getTareas();
+    this.getColaboradores()
   }
 
   getTareas() {
@@ -53,6 +58,16 @@ export class VerProyectoComponent implements OnInit {
     });
   }
 
+  getColaboradores(){
+    this.projectId$.subscribe((projectId) =>{
+      if(projectId !== 0){
+        this.colaboradoresService.listarColaboradores(projectId).subscribe((data:any) =>{
+          this.colaboradores = data 
+        })
+      }
+    })
+  }
+
   openDialog() {
     const dialogRef = this.dialog.open(FormularioTareaComponent, {
       width: '500px',
@@ -60,7 +75,9 @@ export class VerProyectoComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((data) => {
-      this.getTareas();
+      if(data == true){
+        this.getTareas();
+      }
     });
   }
 }

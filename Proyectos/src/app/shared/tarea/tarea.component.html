@@ -1,3 +1,11 @@
+
+<div
+class="mb-10"
+ *ngIf="eliminada">
+  <p class="from-green-400 to-green-600 bg-gradient-to-br text-center p-2 rounded-xl uppercase font-bold text-white text-sm">
+    La tarea ha sido eliminada con éxito.
+  </p>
+</div>
 <div 
 *ngFor="let tarea of tareasHijo"
 class="border-b p-5 flex justify-between items-center">
@@ -12,7 +20,7 @@ class="border-b p-5 flex justify-between items-center">
     </div>
 
     <div
-     class="flex gap-2">
+     class="flex flex-col lg:flex-row gap-2">
         <button
         (click)="editar(tarea.id!)"
         class="bg-indigo-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg"
@@ -27,6 +35,7 @@ class="border-b p-5 flex justify-between items-center">
         >Incompleta</button>
 
         <button
+        (click)="eliminar(tarea.id!)"
         class="bg-red-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg"
         >Eliminar</button>
 

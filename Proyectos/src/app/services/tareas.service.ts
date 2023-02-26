@@ -10,15 +10,15 @@ import { TareaCreacionDTO } from '../interfaces/interfaces';
 })
 export class TareasService {
   tareaCreada:TareaCreacionDTO[] = []
-  tareaId!:number;
+  tareaId!:number | undefined 
   private tareasSubject = new BehaviorSubject<TareaCreacionDTO[]>([]);
+  private tareaSuccess = new BehaviorSubject<boolean>(false);
 
 
   constructor(private http:HttpClient) { }
 
 
   url = environment.apiBase
-  private tareaSuccess = new BehaviorSubject<boolean>(false);
 
 
   crearTareas(id:number, tarea:TareaCreacionDTO):Observable<TareaCreacionDTO>{
@@ -31,6 +31,10 @@ export class TareasService {
 
   editarTareas(tarea:TareaCreacionDTO, id:number):Observable<TareaCreacionDTO>{
     return this.http.put<TareaCreacionDTO>(`${this.url}/tarea/editar?Id=${id}`, tarea)
+  }
+  
+  eliminarTarea(id:number){
+    return this.http.delete(`${this.url}/tarea/borrar?Id=${id}`)
   }
 
   emitTareaSuccess(success: boolean) {

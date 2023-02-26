@@ -12,7 +12,7 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class FormularioTareaComponent implements OnInit {
   proyectoId!: number;
-  idTarea!: number;
+  idTarea: number | undefined;
   usuarioCreacionId: any;
 
 
@@ -27,7 +27,6 @@ export class FormularioTareaComponent implements OnInit {
     this.token();
     this.proyectoId = this.proyectosService.projectId;
     this.idTarea = this.tareasService.tareaId;
-    this.crear()
   }
   
 
@@ -55,7 +54,6 @@ export class FormularioTareaComponent implements OnInit {
       this.tareasService
         .crearTareas(this.proyectoId, tarea)
         .subscribe(data => {
-
         })
     }
   }
@@ -64,4 +62,3 @@ export class FormularioTareaComponent implements OnInit {
     this.usuarioCreacionId = this.tokenService.getIdtoken();
   }
 }
-

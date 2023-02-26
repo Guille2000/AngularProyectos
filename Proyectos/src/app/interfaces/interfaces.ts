@@ -25,3 +25,8 @@ export interface TareaCreacionDTO{
     descripcion:string;
     fechaEntrega:Date;
 }
+
+export interface Colaborador{
+    email:string;
+    id?:number;
+}

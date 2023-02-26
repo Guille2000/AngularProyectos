@@ -1,0 +1,25 @@
+<h1 class="text-4xl font-black">Añadir colaborador(a)</h1>
+<div class="mt-10 flex justify-center">
+  <app-formulario-colaborador
+    (colaborador)="buscarColaborador($event)"
+  ></app-formulario-colaborador>
+</div>
+
+<div *ngIf="this.colaborador.length" class="lg:flex flex-col gap-2 justify-center mt-5">
+  <div
+    *ngFor="let colaborador of colaborador"
+    class="mt-2 bg-white py-10 px-5 lg:w-10/12 rounded-lg shadow"
+  >
+    <h2 class="text-center mb-10 text-2xl font-bold">Resultado:</h2>
+    <div class="flex justify-between items-center gap-5">
+      <p>{{ colaborador.email }}</p>
+      <button
+        (click)="agregarColaborador(colaborador.email)"
+        type="submit"
+        class="bg-slate-500 rounded-lg text-sm uppercase px-5 py-2 font-bold text-white"
+      >
+        Agregar al proyecto
+      </button>
+    </div>
+  </div>
+</div>

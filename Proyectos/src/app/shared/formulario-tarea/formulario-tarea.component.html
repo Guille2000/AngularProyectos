@@ -1,40 +1,40 @@
-<h1 class="text-center">Crear tarea</h1>
+<h1 class="text-center">{{ idTarea ? 'Editar Tarea' : 'Crear Tarea' }}</h1>
 <form [formGroup]="crearTarea" class="my-5">
   <div class="mb-5 p-5">
-    <label 
-    for="nombre"
-    class="text-gray-700 uppercase font-bold text-sm"
+    <label for="nombre" class="text-gray-700 uppercase font-bold text-sm"
       >Nombre tarea</label
     >
 
     <input
-    id="nombre"
-    type="text"
-    placeholder="Nombre tarea"
-    class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-    formControlName="nombre"
-    
+      id="nombre"
+      type="text"
+      placeholder="Nombre tarea"
+      class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+      formControlName="nombre"
     />
-    <span class="text-center text-red-700 font-bold" *ngIf="crearTarea.get('nombre')?.touched && crearTarea.get('nombre')?.errors?.['required']">Ingrese un nombre</span >
+    <span
+      class="text-center text-red-700 font-bold"
+      *ngIf="crearTarea.get('nombre')?.touched && crearTarea.get('nombre')?.errors?.['required']"
+      >Ingrese un nombre</span
+    >
   </div>
 
   <div class="p-5">
-    <label 
-    for="Descripción"
-    class="text-gray-700 uppercase font-bold text-sm"
+    <label for="Descripción" class="text-gray-700 uppercase font-bold text-sm"
       >Descripción tarea</label
     >
 
     <textarea
-    id="Descripción"
-    formControlName="descripcion"
-    class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-    placeholder="Descripción tarea"
-
-  ></textarea>
-  <span class="text-center text-red-700 font-bold" *ngIf="crearTarea.get('descripcion')?.touched && crearTarea.get('descripcion')?.errors?.['required']">Ingrese una descripcion</span >
-
-    
+      id="Descripción"
+      formControlName="descripcion"
+      class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+      placeholder="Descripción tarea"
+    ></textarea>
+    <span
+      class="text-center text-red-700 font-bold"
+      *ngIf="crearTarea.get('descripcion')?.touched && crearTarea.get('descripcion')?.errors?.['required']"
+      >Ingrese una descripcion</span
+    >
   </div>
 
   <div class="p-5">
@@ -42,7 +42,7 @@
       for="fecha-entrega"
       class="text-gray-700 uppercase font-bold text-sm"
     >
-      Fecha Entrega proyecto
+      Fecha Entrega
     </label>
 
     <input
@@ -60,35 +60,35 @@
   </div>
 
   <div class="p-5">
-    <label 
-    for="prioridad"
-    class="text-gray-700 uppercase font-bold text-sm"
+    <label for="prioridad" class="text-gray-700 uppercase font-bold text-sm"
       >Prioridad</label
     >
 
-   <select
-   formControlName="prioridad"
-    class="border-2- w-full p-2 mt-2 placeholder-rounded-md"
-   >
+    <select
+      formControlName="prioridad"
+      class="border-2- w-full p-2 mt-2 placeholder-rounded-md"
+    >
+      <option value="">-- Seleccionar --</option>
+      <option value="Baja">Baja</option>
+      <option value="Intermedia">Intermedia</option>
+      <option value="Alta">Alta</option>
+    </select>
 
-   <option value="">-- Seleccionar --</option>
-   <option value="Baja">Baja</option>
-   <option value="Intermedia">Intermedia</option>
-   <option value="Alta">Alta</option>
+    <span
+      class="text-center text-red-700 font-bold"
+      *ngIf="crearTarea.get('prioridad')?.touched && crearTarea.get('prioridad')?.errors?.['required']"
+      >Prioridad obligatoria</span
+    >
 
-
-   </select>
-
-   <span class="text-center text-red-700 font-bold" *ngIf="crearTarea.get('prioridad')?.touched && crearTarea.get('prioridad')?.errors?.['required']">Prioridad obligatoria</span >
-
-
-   <button 
-   [disabled]="crearTarea.invalid"
-   (click)="crear()"
-   class="bg-sky-600 hover:bg-sky-700 w-full p-3 text-white mt-5 uppercase font-bold transition-colors rounded"
-   mat-button 
-   [mat-dialog-close]="true" 
-   cdkFocusInitial>Crear</button>
-
+    <button
+      [disabled]="crearTarea.invalid"
+      (click)="crear()"
+      class="bg-sky-600 hover:bg-sky-700 w-full p-3 text-white mt-5 uppercase font-bold transition-colors rounded"
+      mat-button
+      [mat-dialog-close]="true"
+      cdkFocusInitial
+    >
+      Crear
+    </button>
   </div>
 </form>

@@ -60,4 +60,24 @@
     [tareasHijo]="tareaCreada"></app-tarea>
   </ng-template>
 
+
 </div>
+<div
+*ngFor="let proyecto of proyecto"
+class="flex items-center justify-between mt-10">
+  <p class="font-bold text-xl">Colaboradores</p>
+  <a 
+  class="text-gray-400 uppercase font-bold hover:text-black"
+  [routerLink]="['/proyectos/nuevoColaborador/', proyecto.id]">Añadir</a>
+</div>
+<div class="bg-white shadow mt-10 rounded-lg">
+  <div *ngIf="colaboradores.length == 0; else Colaboradores">
+    <p class="text-center my p-10">No hay colaboradores en este proyecto</p>
+  </div>
+</div>
+
+<ng-template #Colaboradores>
+<app-colaboradores
+[colaboradoresHijo]="colaboradores"></app-colaboradores>
+</ng-template>
+

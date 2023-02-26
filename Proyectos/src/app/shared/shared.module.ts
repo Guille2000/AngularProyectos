@@ -9,6 +9,8 @@ import { FormularioTareaComponent } from './formulario-tarea/formulario-tarea.co
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from '../services/auth-interceptor.service';
 import { TareaComponent } from './tarea/tarea.component';
+import { FormularioColaboradorComponent } from './formulario-colaborador/formulario-colaborador.component';
+import { ColaboradoresComponent } from './colaboradores/colaboradores.component';
 
 
 
@@ -18,6 +20,8 @@ import { TareaComponent } from './tarea/tarea.component';
     SidebarComponent,
     FormularioTareaComponent,
     TareaComponent,
+    FormularioColaboradorComponent,
+    ColaboradoresComponent,
   ],
   imports: [
     CommonModule,
@@ -30,7 +34,9 @@ import { TareaComponent } from './tarea/tarea.component';
   exports:[
     HeaderComponent,
     SidebarComponent,
-    TareaComponent
+    TareaComponent,
+    FormularioColaboradorComponent,
+    ColaboradoresComponent
   ]
 })
 export class SharedModule { }

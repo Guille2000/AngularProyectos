@@ -1,0 +1,28 @@
+<div *ngIf="error">
+  <p class="bg-red-400 text-white font-bold uppercase p-3 text-center rounded-lg">No se ha encontrado el usuario</p>
+</div>
+<form
+  [formGroup]="buscarForm"
+  class="bg-white py-10 px-5 md:w-1/2 rounded-lg shadow"
+>
+  <div class="mb-5 p-5">
+    <label for="nombre" class="text-gray-700 uppercase font-bold text-sm"
+      >Email usuario</label
+    >
+
+    <input
+      id="email"
+      type="email"
+      placeholder="Email usuario"
+      class="border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md"
+      formControlName="email"
+    />
+
+    <input
+      (click)="buscar()"
+      type="submit"
+      value="Buscar colaborador"
+      class="mt-5 bg-sky-700 w-full py-3 text-white uppercase font-bold rounded-xl hover:cursor-pointer hover:bg-sky-800"
+    />
+  </div>
+</form>

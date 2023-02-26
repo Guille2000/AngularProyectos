@@ -8,11 +8,14 @@ import { ProyectosComponent } from './proyectos/proyectos.component';
 import { VerProyectoComponent } from './ver-proyecto/ver-proyecto.component';
 import { EditarProyectoComponent } from './editar-proyecto/editar-proyecto.component';
 import { EditarTareaComponent } from './editar-tarea/editar-tarea.component';
+import { CanActivateGuard } from '../auth/can-activate.guard';
+import { NuevoColaboradorComponent } from './nuevo-colaborador/nuevo-colaborador.component';
 
 const routes: Routes = [
   {
     path:'',
     component:HomeComponent,
+    canActivate:[CanActivateGuard],
     children:[
       {
         path:'proyectosListado',
@@ -37,6 +40,10 @@ const routes: Routes = [
       {
         path:'editarTarea/:id',
         component:EditarTareaComponent
+      },
+      {
+        path:'nuevoColaborador/:id',
+        component:NuevoColaboradorComponent
       },
       {
         path:'**',
