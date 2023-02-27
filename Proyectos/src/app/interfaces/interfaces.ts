@@ -16,6 +16,8 @@ export interface ProyectosListado{
     fechaEntrega:Date;
     id:number;
     usuarioCreacionId?:string;
+    colaboradores: string;
+    rol: 'Administrador' | 'Colaborador';
 }
 
 export interface TareaCreacionDTO{
@@ -25,6 +27,8 @@ export interface TareaCreacionDTO{
     prioridad:string;
     descripcion:string;
     fechaEntrega:Date;
+    completadaPor?: string 
+
 }
 
 export interface Colaborador{

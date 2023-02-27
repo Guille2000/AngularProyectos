@@ -21,6 +21,7 @@ export class ListaProyectosComponent implements OnInit {
   ngOnInit(): void {
     this.token();
     this.getProyectos()
+
   }
 
   token() {
@@ -31,6 +32,15 @@ export class ListaProyectosComponent implements OnInit {
     .getProyectosId(this.usuarioId)
     .subscribe((data:any) => {
       this.proyectoLista = data 
+      this.proyectoLista = data.map((proyecto:ProyectosListado) =>{
+        if(proyecto.usuarioCreacionId == this.usuarioId){
+          proyecto.rol = 'Administrador'
+        } else {
+          proyecto.rol = 'Colaborador'
+        }
+        return proyecto 
+      })
     })
   }
 }
+

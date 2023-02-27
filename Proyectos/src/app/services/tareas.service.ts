@@ -20,7 +20,6 @@ export class TareasService {
 
   url = environment.apiBase
 
-
   crearTareas(id:number, tarea:TareaCreacionDTO):Observable<TareaCreacionDTO>{
     return this.http.post<TareaCreacionDTO>(`${this.url}/tarea/agregar?proyectoId=${id}`, tarea )
   }
@@ -35,6 +34,10 @@ export class TareasService {
   
   eliminarTarea(id:number){
     return this.http.delete(`${this.url}/tarea/borrar?Id=${id}`)
+  }
+
+  completarTarea(id:number, estado:boolean){
+    return this.http.patch(`${this.url}/tarea/estado?Id=${id}`, estado);
   }
 
   emitTareaSuccess(success: boolean) {

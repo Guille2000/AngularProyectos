@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TareaCreacionDTO } from 'src/app/interfaces/interfaces';
 import { ProyectosService } from 'src/app/services/proyectos.service';
 import { TareasService } from 'src/app/services/tareas.service';
+import { TokenService } from 'src/app/services/token.service';
 import { FormularioTareaComponent } from '../formulario-tarea/formulario-tarea.component';
 
 @Component({
@@ -13,9 +14,12 @@ import { FormularioTareaComponent } from '../formulario-tarea/formulario-tarea.c
 export class TareaComponent implements OnInit {
 
   eliminada:boolean = false;
+  taskCompleted:boolean = false 
+  idToken:string = ''
+  email:any = ''
 
   constructor(public dialog: MatDialog, private tareaService:TareasService,
-    private proyectoService: ProyectosService,
+    private proyectoService: ProyectosService, private tokenService:TokenService
 
     ){
 
@@ -33,8 +37,35 @@ export class TareaComponent implements OnInit {
         this.tareaService.emitTareaSuccess(false);
       }
     });
+
+    const id = this.tareasHijo[0].id; 
+    this.email = localStorage.getItem(`email-${id}`);
+    const estado = localStorage.getItem(`tarea-${id}`);
+    if (estado !== null) {
+      this.taskCompleted = estado === 'true';
+    }
   }
 
+  toggleTarea(id:number){
+    this.taskCompleted = !this.taskCompleted;
+    this.tareaService.completarTarea(id, this.taskCompleted)
+    .subscribe(data =>{
+      this.email = this.tokenService.getEmailToken()
+      localStorage.setItem(`tarea-${id}`, this.taskCompleted.toString());
+      localStorage.setItem(`email-${id}`, this.email)
+
+      if (this.taskCompleted) {
+        const tareaCompletada = this.tareasHijo.find(tarea => tarea.id === id);
+        if (tareaCompletada) {
+          tareaCompletada.completadaPor = this.email;
+        }
+      }
+    })
+  }
+
+  getIdToken(){
+    this.idToken = this.tokenService.getIdtoken();
+  }
   eliminar(id:number){
     if(confirm('¿Desea eliminar esta tarea?')){
       this.tareaService.eliminarTarea(id)

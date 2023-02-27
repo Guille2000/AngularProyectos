@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import jwt_decode from 'jwt-decode';
+import { BehaviorSubject } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
-  constructor() {}
 
   getIdtoken() {
     const token = localStorage.getItem('token');
@@ -22,7 +23,9 @@ export class TokenService {
     const decodedToken: any = jwt_decode(token!);
     const email = decodedToken['email'];
     return email;
+    
   }
+
 
   getToken(){
     return localStorage.getItem('token')
