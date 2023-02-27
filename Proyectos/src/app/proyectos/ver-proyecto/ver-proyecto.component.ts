@@ -130,7 +130,9 @@ export class VerProyectoComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((data) => {
       if (data == true) {
-        this.getTareas();
+        setTimeout(() => {
+          this.getTareas();
+        }, 500);
       }
     });
   }
