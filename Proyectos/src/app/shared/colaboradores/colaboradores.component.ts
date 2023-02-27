@@ -10,14 +10,14 @@ import { TareasService } from 'src/app/services/tareas.service';
   styleUrls: ['./colaboradores.component.scss'],
 })
 export class ColaboradoresComponent implements OnInit {
+  @Input() colaboradoresHijo: Colaborador[] = [];
+  @Output() colaboradorEliminado = new EventEmitter<boolean>();
+
   constructor(
     private colaboradoresService: ColaboradoresService,
     private tareasService: TareasService,
     private proyectoService: ProyectosService
   ) {}
-
-  @Input() colaboradoresHijo: Colaborador[] = [];
-  @Output() colaboradorEliminado = new EventEmitter<boolean>()
 
   ngOnInit(): void {
     this.getColaboradores();
@@ -33,10 +33,12 @@ export class ColaboradoresComponent implements OnInit {
 
   eliminar(id: number) {
     if (confirm('¿Desea eliminar este colaborador?')) {
-      this.colaboradoresService.eliminarColaborador(id).subscribe((data:any) => {
-        this.colaboradorEliminado.emit(data)
-        this.getColaboradores();
-      });
+      this.colaboradoresService
+        .eliminarColaborador(id)
+        .subscribe((data: any) => {
+          this.colaboradorEliminado.emit(data);
+          this.getColaboradores();
+        });
     }
   }
 }

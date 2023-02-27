@@ -51,6 +51,14 @@
 </button>
 
 <p class="font-bold text-xl mt-10">Tareas del proyecto</p>
+<mat-spinner *ngIf="spinner"></mat-spinner>
+<div
+class="mb-10"
+ *ngIf="tareaEliminada">
+  <p class="from-sky-400 to-sky-600 bg-gradient-to-br text-center p-2 rounded-xl uppercase font-bold text-white text-sm">
+    La tarea ha sido eliminada con éxito.
+  </p>
+</div>
 <div class="bg-white shadow mt-10 rounded-lg">
   <div *ngIf="tareaCreada.length == 0; else Tareas">
     <p class="text-center my p-10">No hay tareas en este proyecto</p>
@@ -58,6 +66,7 @@
   <ng-template #Tareas>
     <app-tarea 
     [esAdmin]="esAdmin"
+    (tareaEliminada)="eliminarTarea($event)"
     [tareasHijo]="tareaCreada"></app-tarea>
   </ng-template>
 

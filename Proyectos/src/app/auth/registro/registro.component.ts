@@ -17,7 +17,7 @@ export class RegistroComponent {
   ) {}
 
   alerta: boolean = false;
-    error:boolean = false;
+  error: boolean = false;
 
   registerForm: FormGroup = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],

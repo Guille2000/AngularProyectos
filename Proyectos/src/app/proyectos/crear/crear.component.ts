@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from 'src/app/services/auth.service';
-import jwt_decode from 'jwt-decode';
 import { ProyectosService } from 'src/app/services/proyectos.service';
 import { TokenService } from 'src/app/services/token.service';
 
@@ -14,12 +11,11 @@ import { TokenService } from 'src/app/services/token.service';
 export class CrearComponent {
   usuarioId: any | null;
   creado: boolean = false;
+
   constructor(
     private proyectoService: ProyectosService,
     private tokenService: TokenService,
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private auth: AuthService
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -41,8 +37,7 @@ export class CrearComponent {
       cliente: this.crearForm.value.cliente,
       fechaEntrega: this.crearForm.value.fechaEntrega,
     };
-    this.proyectoService.crearProyecto(proyecto).subscribe((data) => {
-    });
+    this.proyectoService.crearProyecto(proyecto).subscribe((data) => {});
     this.crearForm.reset();
     this.creado = true;
     setTimeout(() => {

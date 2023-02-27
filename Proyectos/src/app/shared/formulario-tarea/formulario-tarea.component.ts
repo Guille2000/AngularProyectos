@@ -4,7 +4,6 @@ import { ProyectosService } from 'src/app/services/proyectos.service';
 import { TareasService } from 'src/app/services/tareas.service';
 import { TokenService } from 'src/app/services/token.service';
 
-
 @Component({
   selector: 'app-formulario-tarea',
   templateUrl: './formulario-tarea.component.html',
@@ -14,8 +13,7 @@ export class FormularioTareaComponent implements OnInit {
   proyectoId!: number;
   idTarea: number | undefined;
   usuarioCreacionId: any;
-  mensaje:string | undefined
-
+  mensaje: string | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,7 +27,6 @@ export class FormularioTareaComponent implements OnInit {
     this.proyectoId = this.proyectosService.projectId;
     this.idTarea = this.tareasService.tareaId;
   }
-  
 
   crearTarea: FormGroup = this.formBuilder.group({
     nombre: ['', [Validators.required]],
@@ -52,16 +49,16 @@ export class FormularioTareaComponent implements OnInit {
         this.tareasService.emitTareaSuccess(true);
       });
     } else {
-      this.tareasService
-        .crearTareas(this.proyectoId, tarea)
-        .subscribe(data => {
-        }, (err) =>{
-          this.mensaje = err.error
+      this.tareasService.crearTareas(this.proyectoId, tarea).subscribe(
+        (data) => {},
+        (err) => {
+          this.mensaje = err.error;
 
-          setTimeout(() =>{
-            this.mensaje = undefined
-          }, 3500)
-        })
+          setTimeout(() => {
+            this.mensaje = undefined;
+          }, 3500);
+        }
+      );
     }
   }
 

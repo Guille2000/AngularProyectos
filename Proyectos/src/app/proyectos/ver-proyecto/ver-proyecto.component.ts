@@ -28,9 +28,11 @@ export class VerProyectoComponent implements OnInit {
   proyecto: ProyectosListado[] = [];
   colaboradores: Colaborador[] = [];
   eliminado: boolean = false;
+  tareaEliminada: boolean = false;
   idToken: any;
   usuarionCreacionId: any;
   esAdmin: boolean = false;
+  spinner:boolean = false
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -50,6 +52,7 @@ export class VerProyectoComponent implements OnInit {
     this.activatedRoute.params
       .pipe(switchMap(({ id }) => this.proyectoService.getProyectoId(id)))
       .subscribe((data: any) => {
+        this.getTareas();
         this.proyecto.push(data);
         this.proyectoService.projectId = data.id;
         this.projectIdSubject.next(data.id);
@@ -61,13 +64,11 @@ export class VerProyectoComponent implements OnInit {
           this.proyectoService.usuarionCreacionId
         );
 
-        this.getTareas();
-
         this.usuarioCreacionId$.subscribe((usuarionCreacionId) => {
-          if (usuarionCreacionId == this.idToken){
-            this.esAdmin = true 
+          if (usuarionCreacionId == this.idToken) {
+            this.esAdmin = true;
           } else {
-            this.esAdmin = false 
+            this.esAdmin = false;
           }
         });
       });
@@ -77,9 +78,11 @@ export class VerProyectoComponent implements OnInit {
   }
 
   getTareas() {
+    this.spinner = true
     this.projectId$.subscribe((projectId) => {
       if (projectId !== 0) {
         this.tareaService.getTareas(projectId).subscribe((data: any) => {
+          this.spinner = false
           this.tareaCreada = data;
         });
       }
@@ -112,6 +115,13 @@ export class VerProyectoComponent implements OnInit {
     }, 2000);
   }
 
+  eliminarTarea(data: boolean) {
+    this.tareaEliminada = data;
+
+    setTimeout(() => {
+      this.tareaEliminada = false;
+    }, 3000);
+  }
   openDialog() {
     const dialogRef = this.dialog.open(FormularioTareaComponent, {
       width: '500px',

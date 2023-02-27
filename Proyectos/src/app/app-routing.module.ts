@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
 import { RegistroComponent } from './auth/registro/registro.component';
 import { CrearComponent } from './proyectos/crear/crear.component';
-import { ErrorComponent } from './utilidades/error/error.component';
 
 const routes: Routes = [
   {
@@ -13,10 +12,6 @@ const routes: Routes = [
   {
     path:'proyectos',
     loadChildren: () => import('./proyectos/proyectos.module').then(m => m.ProyectosModule)
-  },
-  {
-    path:'404',
-    component:ErrorComponent
   },
   {
     path:'**',

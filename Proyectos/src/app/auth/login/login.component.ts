@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -9,15 +9,13 @@ import Swal from 'sweetalert2';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
-  spinner:boolean = false
+export class LoginComponent {
+  spinner: boolean = false;
   constructor(
     public auth: AuthService,
     private formBuilder: FormBuilder,
     private router: Router
   ) {}
-
-  ngOnInit(): void {}
 
   loginForm: FormGroup = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -26,10 +24,10 @@ export class LoginComponent implements OnInit {
 
   login() {
     const { email, password } = this.loginForm.value;
-    this.spinner = true
+    this.spinner = true;
     this.auth.login(email, password).subscribe(
       (data) => {
-        this.spinner = false 
+        this.spinner = false;
         this.router.navigate(['proyectos/dashboard']);
       },
       (err) => {
@@ -38,7 +36,7 @@ export class LoginComponent implements OnInit {
           title: 'Oops...',
           text: `${err.error}`,
         });
-        this.spinner = false
+        this.spinner = false;
       }
     );
   }

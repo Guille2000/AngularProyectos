@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
 import { ProyectosService } from 'src/app/services/proyectos.service';
 import { TokenService } from 'src/app/services/token.service';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-proyecto',
@@ -12,17 +10,17 @@ import Swal from 'sweetalert2';
   styleUrls: ['./editar-proyecto.component.scss'],
 })
 export class EditarProyectoComponent implements OnInit {
+  proyectoId: string = '';
+  usuarioId: string = '';
+  editado: boolean = false;
+
   constructor(
     private proyectoService: ProyectosService,
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
     private tokenService: TokenService,
-    private router:Router
+    private router: Router
   ) {}
-
-  proyectoId: string = '';
-  usuarioId: string = '';
-  editado: boolean = false;
 
   editarForm: FormGroup = this.formBuilder.group({
     nombre: ['', [Validators.required]],
@@ -57,12 +55,13 @@ export class EditarProyectoComponent implements OnInit {
       });
   }
 
-  eliminar(){
-    if(confirm('¿Desea eliminar este proyecto')){
-      this.proyectoService.eliminarProyecto(this.proyectoId)
-      .subscribe(data => {
-        this.router.navigate(['proyectos/proyectosListado']);
-      })
+  eliminar() {
+    if (confirm('¿Desea eliminar este proyecto')) {
+      this.proyectoService
+        .eliminarProyecto(this.proyectoId)
+        .subscribe((data) => {
+          this.router.navigate(['proyectos/proyectosListado']);
+        });
     }
   }
 

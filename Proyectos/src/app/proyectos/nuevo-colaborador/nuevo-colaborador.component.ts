@@ -19,7 +19,7 @@ export class NuevoColaboradorComponent implements OnInit {
   constructor(
     private colaboradoresService: ColaboradoresService,
     private activatedRoute: ActivatedRoute,
-    private router:Router
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -30,8 +30,8 @@ export class NuevoColaboradorComponent implements OnInit {
 
   buscarColaborador(parametros: any) {
     this.colaborador.push(parametros);
-    console.log(parametros)
-    console.log(this.colaborador)
+    console.log(parametros);
+    console.log(this.colaborador);
   }
 
   agregarColaborador(email: string) {
@@ -43,7 +43,7 @@ export class NuevoColaboradorComponent implements OnInit {
           this.mensajeExito = true;
           setTimeout(() => {
             this.mensajeExito = false;
-            this.router.navigate(['/proyectos/', this.proyectoId])
+            this.router.navigate(['/proyectos/', this.proyectoId]);
           }, 2000);
         },
         (err) => {
