@@ -27,7 +27,8 @@ export interface TareaCreacionDTO{
     prioridad:string;
     descripcion:string;
     fechaEntrega:Date;
-    completadaPor?: string 
+    completada?:boolean;
+    completadaPor?: string | null 
 
 }
 

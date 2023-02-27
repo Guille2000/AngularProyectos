@@ -9,23 +9,15 @@ class="border-b p-5 flex justify-between items-center">
         <p class="text-sm mb-1 text-gray-500 uppercase">{{tarea.descripcion}}</p>
         <p class="mb-1 text-xl">{{tarea.fechaEntrega | date }}</p>
         <p class="mb-1 text-gray-600">Prioridad: {{tarea.prioridad}}</p>
-        <p class="text-xs bg-sky-700 font-bold uppercase p-3 rounded-lg text-white" *ngIf="taskCompleted">Completada por: {{email}}
-        </p>
-
+       
     </div>
 
     <div
      class="flex flex-col lg:flex-row gap-2">
         <button
-        *ngIf="esAdmin"
         (click)="editar(tarea.id!)"
         class="bg-indigo-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg"
         >Editar</button>
-
-        <button
-        (click)="toggleTarea(tarea.id!)"
-        [ngClass]="taskCompleted ? 'bg-sky-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg' : 'bg-gray-600 px-4 py-3 text-white uppercase font-bold text-sm rounded-lg'  "
-        >{{taskCompleted ? 'Completa' : 'Incompleta'}}</button>
 
         <button
         *ngIf="esAdmin"

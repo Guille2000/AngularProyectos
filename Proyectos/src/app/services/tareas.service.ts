@@ -39,6 +39,7 @@ export class TareasService {
   completarTarea(id:number, estado:boolean){
     return this.http.patch(`${this.url}/tarea/estado?Id=${id}`, estado);
   }
+  
 
   emitTareaSuccess(success: boolean) {
     this.tareaSuccess.next(success);

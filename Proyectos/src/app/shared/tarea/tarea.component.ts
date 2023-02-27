@@ -38,34 +38,8 @@ export class TareaComponent implements OnInit {
         this.tareaService.emitTareaSuccess(false);
       }
     });
-
-    const id = this.tareasHijo[0].id;
-    this.email = localStorage.getItem(`email-${id}`);
-    const estado = localStorage.getItem(`tarea-${id}`);
-    if (estado !== null) {
-      this.taskCompleted = estado === 'true';
-    }
   }
 
-  toggleTarea(id: number) {
-    this.taskCompleted = !this.taskCompleted;
-    this.tareaService
-      .completarTarea(id, this.taskCompleted)
-      .subscribe((data) => {
-        this.email = this.tokenService.getEmailToken();
-        localStorage.setItem(`tarea-${id}`, this.taskCompleted.toString());
-        localStorage.setItem(`email-${id}`, this.email);
-
-        if (this.taskCompleted) {
-          const tareaCompletada = this.tareasHijo.find(
-            (tarea) => tarea.id === id
-          );
-          if (tareaCompletada) {
-            tareaCompletada.completadaPor = this.email;
-          }
-        }
-      });
-  }
 
   getIdToken() {
     this.idToken = this.tokenService.getIdtoken();
