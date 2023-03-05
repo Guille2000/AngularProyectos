@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Proyectos;
 using Proyectos.DTOS;
+using Proyectos.Entidades;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -11,11 +14,13 @@ namespace Pacientes.Controllers
     [ApiController]
     public class CuentasController : ControllerBase
     {
+        private readonly ApplicationDBContext context;
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
 
-        public CuentasController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public CuentasController(ApplicationDBContext context ,UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
+            this.context = context;
             this.userManager = userManager;
             this.signInManager = signInManager;
         }
@@ -52,7 +57,6 @@ namespace Pacientes.Controllers
                 return BadRequest("Login incorrecto");
             }
         }
-
         private async Task<RespuestaAutenticacion> ConstruirToken(CredencialesUsuariosDTO credenciales)
 
         {

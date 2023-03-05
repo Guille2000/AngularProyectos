@@ -10,14 +10,16 @@ import Swal from 'sweetalert2';
   styleUrls: ['./registro.component.scss'],
 })
 export class RegistroComponent {
+  alerta: boolean = false;
+  error: boolean = false;
+  spinner:boolean = false
   constructor(
     private auth: AuthService,
     private formBuilder: FormBuilder,
     private router: Router
   ) {}
 
-  alerta: boolean = false;
-  error: boolean = false;
+ 
 
   registerForm: FormGroup = this.formBuilder.group({
     email: ['', [Validators.required, Validators.email]],
@@ -26,10 +28,12 @@ export class RegistroComponent {
 
   registro() {
     const { email, password } = this.registerForm.value;
+    this.spinner = true
 
     this.auth.registro(email, password).subscribe(
       (data) => {
         this.alerta = true;
+        this.spinner = false
         setTimeout(() => {
           this.router.navigate(['auth/login']);
         }, 2000);

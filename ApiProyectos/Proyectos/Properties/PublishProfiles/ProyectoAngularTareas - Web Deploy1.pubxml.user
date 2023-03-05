@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo se usa en el proceso de publicación y empaquetado del proyecto web. Para personalizar el comportamiento de este proceso,
+edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 para obtener más información. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADDGyJ+Vf9Uaa4IAJQY0+jAAAAAACAAAAAAAQZgAAAAEAACAAAAAwmFAAQudR6V4RfvGzy5vz0yAnvYgy6EIxnmI9N0lJxgAAAAAOgAAAAAIAACAAAADppo+eyh9EUj3+SYg7gajoQyNcG3THJ2dDIffNYUvgtYAAAAAEc8ZqLOPdAnUvmt5Y2OJ3KV+enpGIQGIbbDphktpsKdebYVEvGzXmD7Py8XDhK+Rb6IeiuUaz8Kq8JFYC3yC/GyWWU/LK3om7f0Fh6X1dH2di2/1tIU9sXAwWjO8I1+KkYw4aeWvOwAyTfZ5cuiadUf2HrY+lVDe0s7ZmXH0t20AAAAD8fJIghpYKEt1ECvFOFp9LYjlIoXn4ipZg52NPBGQEJGytKzxYet1ydNaJ76jAptlZjSp2AOTwAAXGG9XFcPiM</EncryptedPassword>
+    <History>False|2023-02-27T13:50:28.4006388Z;False|2023-02-27T10:49:59.6839509-03:00;False|2023-02-27T10:47:06.6224140-03:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="Proyectos.ApplicationDBContext">
+      <Value>Data Source=tcp:proyectosangular.database.windows.net,1433%3bInitial Catalog=AngularProyectos%3bUser Id=Guille2000%40proyectosangular%3bPassword=g789G789!!</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

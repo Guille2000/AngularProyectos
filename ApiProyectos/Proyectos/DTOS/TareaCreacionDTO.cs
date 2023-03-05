@@ -11,6 +11,8 @@
 
         public string UsuarioId { get; set; }
 
+        public DateTime FechaEntrega { get; set; }
+
 
     }
 }

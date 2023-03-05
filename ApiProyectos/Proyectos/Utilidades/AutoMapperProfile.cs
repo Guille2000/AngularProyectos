@@ -15,6 +15,9 @@ namespace Proyectos.Utilidades
             CreateMap<Tarea, TareaDTO>().ReverseMap();
 
             CreateMap<TareaCreacionDTO, Tarea>();
+
+            CreateMap<Colaborador, ColaboradoresDTO>().ReverseMap();
+
         }
     }
 }

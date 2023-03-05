@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo se usa en el proceso de publicación y empaquetado del proyecto web. Para personalizar el comportamiento de este proceso,
+edite el archivo MSBuild. Visite https://go.microsoft.com/fwlink/?LinkID=208121 para obtener más información. 
+-->
+<Project>
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADDGyJ+Vf9Uaa4IAJQY0+jAAAAAACAAAAAAAQZgAAAAEAACAAAADG1bkoph+SA0shfz7wpAehS1K89SdwZG6gTPntKMMbtQAAAAAOgAAAAAIAACAAAACajtr88a4E7WgX/QMH1gpgCcDjYAtnO3Fm7diJMN7DK4AAAABJQ5tj3n5OMGoY3x5aZ3B6FXiIxfYRkaSjHS+bxhECkpwK/QUZcEnMgqyv6g9WuYSDX7IkT92vxMH0DZyQv+yj7DmRr6LzdJ//1dIZ966aeWT2OFQ20XUT8CjOJlv228PVwK7Cx+hZp0DjnjSxExjFr/eWVOnyUTlMviKNR4DXoEAAAADNaV96RRootrIhtEQqHrjsDU3y3QG4Kk5Lv4uUHqnbrpBuKc2k4PpYuknL8wt73PsaeEi0qNggCfH81Gm7d1PB</EncryptedPassword>
+    <History>False|2023-02-27T12:50:34.8135404Z;False|2023-02-27T09:48:10.4931808-03:00;False|2023-02-27T09:47:31.2546292-03:00;False|2023-02-27T09:46:50.5056283-03:00;False|2023-02-27T09:42:47.6681374-03:00;False|2023-02-27T09:40:38.7098682-03:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+  <ItemGroup>
+    <EFMigrations Include="Proyectos.ApplicationDBContext">
+      <Value>Data Source=tcp:pacientesdbserver.database.windows.net,1433%3bInitial Catalog=Proyectos_db%3bUser Id=Guille2000%40pacientesdbserver%3bPassword=g789G789!!</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

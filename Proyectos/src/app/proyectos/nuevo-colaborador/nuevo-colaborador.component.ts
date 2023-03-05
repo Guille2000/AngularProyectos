@@ -30,8 +30,7 @@ export class NuevoColaboradorComponent implements OnInit {
 
   buscarColaborador(parametros: any) {
     this.colaborador.push(parametros);
-    console.log(parametros);
-    console.log(this.colaborador);
+    
   }
 
   agregarColaborador(email: string) {
@@ -47,7 +46,6 @@ export class NuevoColaboradorComponent implements OnInit {
           }, 2000);
         },
         (err) => {
-          console.log(err.error);
           this.mensajeError = err.error;
           setTimeout(() => {
             this.mensajeError = undefined;

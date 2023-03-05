@@ -29,13 +29,11 @@ export class FormularioColaboradorComponent {
     this.colaboradoresService.buscarColaboradores(email).subscribe(
       (data: any) => {
         this.colaborador.emit(data);
-        console.log(data);
         this.spinner = false;
       },
       (err) => {
         this.error = true;
         this.spinner = false;
-        console.log(err);
         setTimeout(() => {
           this.error = false;
         }, 4000);

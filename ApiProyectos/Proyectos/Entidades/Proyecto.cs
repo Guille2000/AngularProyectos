@@ -17,6 +17,16 @@ namespace Proyectos.Entidades
 
         public IdentityUser UsuarioCreacion { get; set; }
 
+        public int TareaId { get; set; }
         public List<Tarea> Tareas { get; set; }
+
+        public List<Colaborador> Colaboradores { get; set; }
+
+        public Proyecto()
+        {
+            Tareas = new List<Tarea>();
+            Colaboradores = new List<Colaborador>();
+
+        }
     }
 }

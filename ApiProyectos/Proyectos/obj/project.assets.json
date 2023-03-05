@@ -4178,11 +4178,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\guiac\\source\\repos\\ApiProyectos\\Proyectos\\Proyectos.csproj",
+      "projectUniqueName": "C:\\Users\\guiac\\OneDrive\\Escritorio\\AngularProyecto\\ApiProyectos\\Proyectos\\Proyectos.csproj",
       "projectName": "Proyectos",
-      "projectPath": "C:\\Users\\guiac\\source\\repos\\ApiProyectos\\Proyectos\\Proyectos.csproj",
+      "projectPath": "C:\\Users\\guiac\\OneDrive\\Escritorio\\AngularProyecto\\ApiProyectos\\Proyectos\\Proyectos.csproj",
       "packagesPath": "C:\\Users\\guiac\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\guiac\\source\\repos\\ApiProyectos\\Proyectos\\obj\\",
+      "outputPath": "C:\\Users\\guiac\\OneDrive\\Escritorio\\AngularProyecto\\ApiProyectos\\Proyectos\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

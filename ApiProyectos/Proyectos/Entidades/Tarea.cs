@@ -19,6 +19,9 @@ namespace Proyectos.Entidades
 
         public IdentityUser UsuarioCreacion { get; set; }
 
+        public IdentityUser Completado { get; set; }
+
+
         public string Prioridad { get; set; }
 
         public int ProyectoId { get; set; }

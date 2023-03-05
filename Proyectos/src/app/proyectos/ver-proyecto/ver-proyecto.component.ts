@@ -71,6 +71,7 @@ export class VerProyectoComponent implements OnInit {
             this.esAdmin = false;
           }
         });
+        this.getTareas()
       });
 
     this.getColaboradores();
@@ -130,9 +131,8 @@ export class VerProyectoComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((data) => {
       if (data == true) {
-        setTimeout(() => {
           this.getTareas();
-        }, 500);
+      
       }
     });
   }

@@ -10,90 +10,65 @@ namespace Proyectos.Controllers
 {
     [ApiController]
 
-    public class ProyectoController:ControllerBase
+    public class ProyectoController : ControllerBase
     {
-        private readonly IServicioUsuarios servicioUsuarios;
         private readonly IMapper mapper;
         private readonly ApplicationDBContext context;
+        private readonly IProyecto proyectoService;
 
-        public ProyectoController(IServicioUsuarios servicioUsuarios ,IMapper mapper ,ApplicationDBContext context)
+        public ProyectoController( IMapper mapper, ApplicationDBContext context, IProyecto proyectoService)
         {
-            this.servicioUsuarios = servicioUsuarios;
             this.mapper = mapper;
             this.context = context;
+            this.proyectoService = proyectoService;
         }
 
         [HttpPost]
         [Route("proyectos/agregar")]
-        public async Task<ActionResult> Post([FromBody] ProyectoCreacionDTO proyectoCreacionDTO)
+        public IActionResult Post([FromBody] ProyectoCreacionDTO proyectoCreacionDTO)
         {
-      
-            var proyecto = mapper.Map<Proyecto>(proyectoCreacionDTO);
-            context.Add(proyecto);
-            await context.SaveChangesAsync();
-            return Ok(proyecto);
+            return Ok(proyectoService.CrearProyecto(proyectoCreacionDTO));
         }
         [HttpGet]
         [Route("proyectos/listado")]
-        public async Task<ActionResult<List<ProyectoDTO>>> GetProjectsForUser(string userId)
+        public async Task<IActionResult> GetProjectsForUser(string userId)
         {
-            // Get the user with the specified ID
-            var usuario = await context.Users.FindAsync(userId);
-
-            if (usuario == null)
+            try
             {
-                return NotFound();
+                var proyectos = await proyectoService.ListarProyectos(userId);
+                return Ok(proyectos);
             }
-
-            // Get all the projects for the user
-            var proyectos = await context.Proyectos
-                .Where(p => p.UsuarioCreacionId == userId)
-                .ToListAsync();
-
-            return mapper.Map<List<ProyectoDTO>>(proyectos);
-
-
+            catch (UsuarioNoEncontradoException ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
         [HttpGet]
         [Route("proyectos/id")]
-        public async Task<ActionResult<ProyectoDTO>> Get (int Id)
+        public async Task<IActionResult> Get(int id)
         {
-            var proyecto = await context.Proyectos.SingleAsync(x => x.Id == Id); 
+            var proyecto = await proyectoService.GetProyectoId(id);
 
             if (proyecto == null)
             {
-                return NotFound();
+                return NotFound("Proyecto no encontrado");
             }
-            return mapper.Map<ProyectoDTO>(proyecto);
+            return Ok(proyecto);
         }
 
         [HttpPut]
         [Route("proyectos/editar")]
-        public async Task<ActionResult> Put (int Id, [FromBody] ProyectoCreacionDTO proyectoCreacionDTO)
+        public async Task<IActionResult> EditarProyecto(int id, [FromBody] ProyectoCreacionDTO proyectoDTO)
         {
-            var proyecto = await context.Proyectos.SingleAsync(x => x.Id == Id);
-            if (proyecto == null)
-            {
-                return NotFound();
-            }
-            proyecto = mapper.Map(proyectoCreacionDTO, proyecto);
-            await context.SaveChangesAsync();
+            var proyecto = await proyectoService.Editar(id, proyectoDTO);
             return Ok(proyecto);
-
         }
         [HttpDelete]
         [Route("proyectos/eliminar")]
-        public async Task<ActionResult> Delete(int Id)
+        public IActionResult Delete(int id)
         {
-            var existe = await context.Proyectos.AnyAsync(x => x.Id == Id);
-            if (!existe)
-            {
-                return NotFound();
-            }
-
-            context.Remove(new Proyecto() { Id = Id });
-            await context.SaveChangesAsync();
-            return Ok(existe);
+            proyectoService.Eliminar(id);
+            return Ok();
         }
 
     }

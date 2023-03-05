@@ -19,10 +19,12 @@ builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 
-builder.Services.AddTransient<IServicioUsuarios, ServicioUsuarios>();
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
 builder.Services.AddControllers();
+builder.Services.AddTransient<IProyecto, ProyectosService>();
+builder.Services.AddTransient<ITarea, TareasService>();
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDBContext>()
     .AddDefaultTokenProviders();

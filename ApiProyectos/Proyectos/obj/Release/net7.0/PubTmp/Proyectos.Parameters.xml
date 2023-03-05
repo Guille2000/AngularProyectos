@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="AngularProyectos" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\guiac\\source\\repos\\ApiProyectos\\Proyectos\\obj\\Release\\net7\.0\\PubTmp\\Out\\$" />
+  </parameter>
+  <parameter name="Proyectos.ApplicationDBContext" description="" value="Data Source=tcp:pacientesdbserver.database.windows.net,1433;Initial Catalog=AngularProyectos;User Id=Guille2000@pacientesdbserver;Password=g789G789!!" tags="dbfullsql">
+    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\guiac\\source\\repos\\ApiProyectos\\Proyectos\\obj\\Release\\net7\.0\\PubTmp\\EFSQLScripts\\Proyectos\.ApplicationDBContext\.sql$" />
+  </parameter>
+</parameters>

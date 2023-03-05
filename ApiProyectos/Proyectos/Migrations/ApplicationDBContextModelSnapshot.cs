@@ -220,6 +220,27 @@ namespace Proyectos.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Proyectos.Entidades.Colaborador", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProyectoId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProyectoId");
+
+                    b.ToTable("Colaboradores", (string)null);
+                });
+
             modelBuilder.Entity("Proyectos.Entidades.Proyecto", b =>
                 {
                     b.Property<int>("Id")
@@ -240,6 +261,9 @@ namespace Proyectos.Migrations
                     b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TareaId")
+                        .HasColumnType("int");
+
                     b.Property<string>("UsuarioCreacionId")
                         .HasColumnType("nvarchar(450)");
 
@@ -247,7 +271,7 @@ namespace Proyectos.Migrations
 
                     b.HasIndex("UsuarioCreacionId");
 
-                    b.ToTable("Proyectos");
+                    b.ToTable("Proyectos", (string)null);
                 });
 
             modelBuilder.Entity("Proyectos.Entidades.Tarea", b =>
@@ -257,6 +281,9 @@ namespace Proyectos.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CompletadoId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Descripcion")
                         .HasColumnType("nvarchar(max)");
@@ -284,11 +311,13 @@ namespace Proyectos.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CompletadoId");
+
                     b.HasIndex("ProyectoId");
 
                     b.HasIndex("UsuarioCreacionId");
 
-                    b.ToTable("Tareas");
+                    b.ToTable("Tareas", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -342,6 +371,17 @@ namespace Proyectos.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Proyectos.Entidades.Colaborador", b =>
+                {
+                    b.HasOne("Proyectos.Entidades.Proyecto", "Proyecto")
+                        .WithMany("Colaboradores")
+                        .HasForeignKey("ProyectoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Proyecto");
+                });
+
             modelBuilder.Entity("Proyectos.Entidades.Proyecto", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "UsuarioCreacion")
@@ -353,6 +393,10 @@ namespace Proyectos.Migrations
 
             modelBuilder.Entity("Proyectos.Entidades.Tarea", b =>
                 {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "Completado")
+                        .WithMany()
+                        .HasForeignKey("CompletadoId");
+
                     b.HasOne("Proyectos.Entidades.Proyecto", "Proyecto")
                         .WithMany("Tareas")
                         .HasForeignKey("ProyectoId")
@@ -363,6 +407,8 @@ namespace Proyectos.Migrations
                         .WithMany()
                         .HasForeignKey("UsuarioCreacionId");
 
+                    b.Navigation("Completado");
+
                     b.Navigation("Proyecto");
 
                     b.Navigation("UsuarioCreacion");
@@ -370,6 +416,8 @@ namespace Proyectos.Migrations
 
             modelBuilder.Entity("Proyectos.Entidades.Proyecto", b =>
                 {
+                    b.Navigation("Colaboradores");
+
                     b.Navigation("Tareas");
                 });
 #pragma warning restore 612, 618

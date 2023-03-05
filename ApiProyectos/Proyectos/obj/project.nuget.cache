@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qRGA3ndjVVjGEQoU9gFhnH9+OQi7YzezJWJxCB38Ck5IF+zUVmDOptduJR7hEVUO7TCRLtYrYZis7/DB2hN3ew==",
+  "dgSpecHash": "uT7oE9BI6lAnJJiosYS3vrdsSOfBN69i8kz927dwp4NRMPviUaXvEdZUjx/hwm+xnlZgzkYz+v7c8rVJdxJwQg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\guiac\\source\\repos\\ApiProyectos\\Proyectos\\Proyectos.csproj",
+  "projectFilePath": "C:\\Users\\guiac\\OneDrive\\Escritorio\\AngularProyecto\\ApiProyectos\\Proyectos\\Proyectos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\guiac\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\guiac\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
